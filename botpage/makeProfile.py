@@ -1,6 +1,6 @@
 import csv
 import random
-import idolData
+from . import idolData
 
 
 final = True

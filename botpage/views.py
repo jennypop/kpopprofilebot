@@ -23,11 +23,10 @@ def index(request):
             <p style="text-align: center"><span><strong>{0} facts:</strong></span><br />
             {6}
         </body>
-    </html>"""
-    .format(profile["name"], profile["group"],
+    </html>""").format(profile["name"], profile["group"],
         positionString,
         profile["sign"],
         profile["bloodType"],
-        profile["MBTI"]),
+        profile["MBTI"],
         factsHTML)
     return HttpResponse(html)
