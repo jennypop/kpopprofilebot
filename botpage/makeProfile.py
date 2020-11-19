@@ -63,11 +63,14 @@ def processFact(
             unprocessedFact = unprocessedFact.replace("!IDOLNAME!", idolNamesUsing[i], 1)
 
     uniqueGroupNames = unprocessedFact.count("!GROUPNAME!")
+    uniqueGroupNames += unprocessedFact.count("!SUBUNITNAME!")
     if uniqueGroupNames > 0:
         groupNamesUsing = random.sample(groupNames[1:], uniqueGroupNames)
         groupNamesUsing[0] = groupNames[0]
         for i in range(uniqueGroupNames):
             unprocessedFact = unprocessedFact.replace("!GROUPNAME!", groupNamesUsing[i], 1)
+        for i in range(uniqueGroupNames):
+            unprocessedFact = unprocessedFact.replace("!SUBUNITNAME!", groupNamesUsing[i], 1)
 
     unprocessedFact = unprocessedFact.replace("!COMPANYNAME!", random.choice(idolData.companyAll))
     unprocessedFact = unprocessedFact.replace("!SURVIVALSHOWNAME!", random.choice(idolData.survivalShowAll))
