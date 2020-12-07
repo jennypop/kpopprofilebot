@@ -3,16 +3,14 @@ import random
 import re
 #import idolData
 #import foodFactGenerator
+#import csvPaths
 from . import idolData
 from . import foodFactGenerator
-
-
-final = True
+from . import csvPaths
 
 
 def getIdolNames():
-    bioPath = '/home/kpopprofilebot/botsite/botpage/idolbio.csv' if final else "idolbio.csv"
-    biofile = open(bioPath, 'r', encoding="utf8")
+    biofile = open(csvPaths.bioPath, 'r', encoding="utf8")
     idolNamesAll = {}
 
     with biofile:
@@ -24,8 +22,7 @@ def getIdolNames():
 
 
 def getGroupNames():
-    groupsPath = '/home/kpopprofilebot/botsite/botpage/idolgroups.csv' if final else "idolgroups.csv"
-    groupsfile = open(groupsPath, 'r', encoding="utf8")
+    groupsfile = open(csvPaths.groupsPath, 'r', encoding="utf8")
     groupNamesAll = []
 
     with groupsfile:
@@ -105,8 +102,7 @@ def makeFactsList(
     idolNames,
     groupNames
 ):
-    factsPath = '/home/kpopprofilebot/botsite/botpage/idolfacts.csv' if final else "idolfacts.csv"
-    factsfile = open(factsPath, 'r', encoding="utf8")
+    factsfile = open(csvPaths.factsPath, 'r', encoding="utf8")
     numRandomFacts = 7
     numFoodFacts = 2
     factsList = []

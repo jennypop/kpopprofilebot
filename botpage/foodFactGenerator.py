@@ -1,6 +1,8 @@
 import csv
 import random
 import re
+#import csvPaths
+from . import csvPaths
 
 words = {"food": [],
          "noExpressionFood": [],
@@ -67,7 +69,7 @@ foodFacts = ["!SHE! ((also ))[eatsVerb] [food]",
 
 # foodlist generator
 def getFoods():
-    foodPath = "foods.csv"
+    foodPath = csvPaths.foodPath
     foodfile = open(foodPath, 'r', encoding="utf8")
     foods = []
 
