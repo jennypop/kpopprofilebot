@@ -1,5 +1,5 @@
-idolPositionsAll = ["Main Vocal", "Lead Vocal", "Sub-Vocal", "Main Dancer", "Lead Dancer", "Maknae", "Leader", "Visual"]
-idolPositionsFun = ["MILF", "Hag", "The one who wears the cowboy hat", "Mullet", "Token Heterosexual"]
+idolPositionsAll = ["Main Vocal", "Lead Vocal", "Sub-Vocal", "Main Dancer", "Lead Dancer", "Maknae", "Leader", "Visual", "Face of the group", "Main Rapper", "Lead Rapper", "Sub Rapper"]
+idolPositionsFun = ["MILF", "Hag", "The one who wears the cowboy hat", "Mullet", "Token Heterosexual", "Triangle player", "Libero", "Bassist", "Drummer", "Keyboardist", "Acoustic Guitarist", "Mom", "The one who can cook"]
 idolPositionsM = ["manbun", "Catboy", "Himbo"]
 
 bloodTypesAll = ["A", "B", "AB", "O", "Unknown"]

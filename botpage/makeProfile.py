@@ -1,6 +1,10 @@
 import csv
 import random
+import re
+#import idolData
+#import foodFactGenerator
 from . import idolData
+from . import foodFactGenerator
 
 
 final = True
@@ -44,6 +48,11 @@ def makePositionsList():
     if (random.random() > 0.9):
         weirdPositions += 1
     return random.sample(idolData.idolPositionsAll, numPositions) + random.sample(idolData.idolPositionsFun, weirdPositions)
+
+
+def multiple_replace(string, rep_dict):
+    pattern = re.compile("|".join([re.escape(k) for k in sorted(rep_dict, key=len, reverse=True)]), flags=re.DOTALL)
+    return pattern.sub(lambda x: rep_dict[x.group(0)], string)
 
 
 def processFact(
@@ -98,21 +107,29 @@ def makeFactsList(
 ):
     factsPath = '/home/kpopprofilebot/botsite/botpage/idolfacts.csv' if final else "idolfacts.csv"
     factsfile = open(factsPath, 'r', encoding="utf8")
-    numFacts = 8
+    numRandomFacts = 7
+    numFoodFacts = 2
     factsList = []
 
     with factsfile:
         factsReader = csv.reader(factsfile)
-        chances = numFacts / 15000
+        chances = numRandomFacts / 15000
         for line in factsReader:
             if random.random() < chances:
                 unprocessedFact = line[0]
-                processedFact = processFact(unprocessedFact, gender, idolNames, groupNames)
-                fact = formatFact(processedFact)
-                factsList.append(fact)
-                if len(factsList) == numFacts:
+                factsList.append(unprocessedFact)
+                if len(factsList) == numRandomFacts:
                     break
-        return factsList
+
+    for i in range(numFoodFacts):
+        factsList.append(foodFactGenerator.getFoodFact())
+
+    processedFactsList = []
+    for unprocessedFact in factsList:
+        processedFact = processFact(unprocessedFact, gender, idolNames, groupNames)
+        formattedFact = formatFact(processedFact)
+        processedFactsList.append(formattedFact)
+    return processedFactsList
 
 
 def makeProfile(userIdolName, userGroupName):
