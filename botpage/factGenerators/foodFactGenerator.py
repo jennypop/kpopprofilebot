@@ -1,8 +1,7 @@
 import csv
 import random
 import re
-#import csvPaths
-from . import csvPaths
+from botpage import csvPaths
 
 words = {"food": [],
          "noExpressionFood": [],
@@ -12,7 +11,7 @@ words = {"food": [],
         "everyAllFood": ["every food", "all foods", "everything", "anything"],
         "foodDish": ["food", "dish"],
         "cookedByPerson": ["!HER! mom", "!HER! dad", "!MEMBERNAME!", "!HER! sister", "!HER! brother", "!HER! grandmother", "!HER! grandpa", "!HER! manager"],
-        "condiment": ["salt", "sugar", "cheese", "ketchup", "parmesan", "mustard", "hot sauce", "kimchi", "rice", "noodles"],
+        "condiment": ["salt", "sugar", "cheese", "ketchup", "parmesan", "mustard", "hot sauce", "kimchi", "rice", "noodles", "aioli", "barbecue sauce", "chili sauce", "chutney", "fish paste", "dip", "fruit preserves", "soy sauce", "horseradish", "guac", "mayonnaise", "pesto", "sauerkraut", "sriracha", "teriyaki sauce", "vinegar"],
         "meal": ["breakfast", "brunch", "lunch", "tea", "supper", "dinner", "midnight snack", "late night snack"],
         "wasWere": ["was", "were"],
         "situation": ["!SHE! is alone", "!SHE! is with others", "!SHE! is at home", "the night comes"],
@@ -37,7 +36,9 @@ foodExpressions = ["anything [foodFlavor]",
 badFoodExpressions = ["[food] flavored [flavoredFood]",
                 "[food] fried rice",
                 "[food] noodles",
-                "[food] sushi"]
+                "[food] sushi",
+                "mayo [food]",
+                "jellied [food]"]
 
 prefixExpressions = ["!SHE! eats a lot[prefixCombiner]",
         "!SHE! eats the most in the group[prefixCombiner]",
@@ -51,6 +52,7 @@ foodFacts = ["!SHE! ((also ))[eatsVerb] [food]",
 "[food] is !HER! ((second ))favorite food",
 "[food] is one of !HER! favorite foods",
 "A food !SHE! ((really ))[eatsVerb] is [food]",
+"((Least ))favorite food: [food]",
 "!SHE! prefers [food] to [food]",
 "!SHE! gets an allergic reaction to [food]",
 "!SHE! is allergic to [food]",
@@ -97,10 +99,6 @@ def processFactTemplate(txt):
     # Substitute all [] words
     matchKeys = re.compile(r'\[({})\]'.format('|'.join(words)))
     txt = matchKeys.sub(lambda match: random.choice(words[match.group(1)]), txt)
-
-    # Flip the coin on all optional words
-    matchParen = re.compile(r"\(\(([^)]*)\)\)")
-    txt = matchParen.sub(lambda match: random.choice([match.group(1), ""]), txt)
     return txt
 
 
@@ -115,7 +113,7 @@ def debug():
         print(txt)
 
 
-def getFoodFact():
+def getFact():
     txt = random.choice(foodFacts)
     txt = processFactTemplate(txt)
     return txt

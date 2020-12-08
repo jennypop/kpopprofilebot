@@ -1,12 +1,9 @@
 import csv
 import random
 import re
-#import idolData
-#import foodFactGenerator
-#import csvPaths
-from . import idolData
-from . import foodFactGenerator
-from . import csvPaths
+from botpage import idolData
+from botpage import csvPaths
+from factGenerators import foodFactGenerator, mottoFactGenerator
 
 
 def getIdolNames():
@@ -58,10 +55,16 @@ def processFact(
     idolNames,
     groupNames
 ):
+    # Replace gendered pronouns
     unprocessedFact = unprocessedFact.replace("!SHE!", "he" if gender else "she")
     unprocessedFact = unprocessedFact.replace("!HER!", "his" if gender else "her")
     unprocessedFact = unprocessedFact.replace("!HERSELF!", "himself" if gender else "herself")
 
+    # Replace ((x)) with nothing half of the time
+    matchParen = re.compile(r"\(\(([^)]*)\)\)")
+    unprocessedFact = matchParen.sub(lambda match: random.choice([match.group(1), ""]), unprocessedFact)
+
+    # Replace names
     uniqueIdolNames = unprocessedFact.count("!IDOLNAME!")
     if uniqueIdolNames > 0:
         idolNamesUsing = random.sample(idolNames[1:], uniqueIdolNames)
@@ -103,10 +106,12 @@ def makeFactsList(
     groupNames
 ):
     factsfile = open(csvPaths.factsPath, 'r', encoding="utf8")
-    numRandomFacts = 7
-    numFoodFacts = 2
+    numRandomFacts = random.randint(5, 7)
+    numFoodFacts = random.randint(0, 2)
+    numMottoFacts = random.randint(0, 1)
     factsList = []
 
+    # General facts
     with factsfile:
         factsReader = csv.reader(factsfile)
         chances = numRandomFacts / 15000
@@ -117,8 +122,13 @@ def makeFactsList(
                 if len(factsList) == numRandomFacts:
                     break
 
+    # Food facts
     for i in range(numFoodFacts):
-        factsList.append(foodFactGenerator.getFoodFact())
+        factsList.append(foodFactGenerator.getFact())
+    for i in range(numMottoFacts):
+        factsList.append(mottoFactGenerator.getFact())
+
+    random.shuffle(factsList)
 
     processedFactsList = []
     for unprocessedFact in factsList:
