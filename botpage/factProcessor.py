@@ -35,6 +35,7 @@ def initializeReplaceWordsTable(
     # Replace gendered pronouns
     replaceWords["!SHE!"] = "he" if gender else "she"
     replaceWords["!HER!"] = "his" if gender else "her"
+    replaceWords["!HERHIM!"] = "him" if gender else "her"
     replaceWords["!HERSELF!"] = "himself" if gender else "herself"
 
     replaceWordsMultipleChoice["!COMPANYNAME!"] = idolData.companyAll

@@ -21,7 +21,7 @@ favoriteMovieFactTemplates = [
     "!HER! recommended movie is ([movie])*2( and )",
     "[movie] was the first movie that !SHE! saw",
     "[movie] is !HER! {favorite/most watched} movie",
-    "The most memorable movie for !HER! is [movie]",
+    "The most memorable movie for !HERHIM! is [movie]",
     "!SHE! watches [movie] [oftenTimePeriod]"]
 #+ "([favoriteMovieFact])"
 
