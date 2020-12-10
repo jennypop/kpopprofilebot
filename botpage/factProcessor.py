@@ -9,6 +9,7 @@ replaceWordsMultipleChoice = {
     "wasWere": ["was", "were"],
     "whenSituation": ["when !SHE! is alone", "when !SHE! is with others", "when !SHE! is at home", "when the night comes", "when !SHE! can't sleep", "before going to bed", "from her bed", "at the cinema", "when she feels good", "when she feels down", "on the first day of each month", "when watching a movie", ],
     "timePeriod": ["a month", "two months", "three months", "a week", "two weeks", "half a year", "a year", "the rest of !HER! life"],
+    "oftenTimePeriod": ["once a month", "every day", "every week", "twice a week", "every two weeks", "once every few days", "every year", "twice a year", "a few times a year", "once every few months", "multiple times a day"],
     "shortTimePeriod": ["five seconds", "a minute", "three minutes", "the blink of an eye", "ten minutes", "twenty seconds"],
     "positiveAdjective": ["relaxing", "comfortable", "refreshing"],
     "prefixCombiner": [" and ", ", ", ": "],

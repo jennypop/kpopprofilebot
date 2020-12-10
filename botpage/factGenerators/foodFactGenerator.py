@@ -56,7 +56,9 @@ foodFacts = ["!SHE! ((also ))[eatsVerb] ([food])*3( and )",
 "!SHE! can finish [food] in [shortTimePeriod]",
 "A food !SHE! wants to eat even after !SHE! just ate it is [food]",
 "!HER! nickname is [noExpressionFood]nator",
-"!HER! go-to snack [whenSituation] is [food]", 
+"!HER! go-to snack [whenSituation] is [food]",
+"When dieting, she craves [food] the most",
+"!SHE! is addicted to [food]",
 ]
 
 # foodlist generator
