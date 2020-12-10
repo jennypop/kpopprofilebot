@@ -47,6 +47,7 @@ def initializeReplaceWordsTable(
 def processFactEarly(txt):
     txt = processAsterisk(txt)
     txt = processABCChoice(txt)
+    return txt
 
 
 def processAsterisk(txt):
@@ -67,7 +68,7 @@ def processAsterisk(txt):
 
 def processABCChoice(txt):
     # Match "{a/b/c}" -> a or b or c
-    matchABCChoice = re.compile(r"\{([^\/]*)\/([^\/]*)\/?([^\/]*)?\/?([^\}]*)?\}")
+    matchABCChoice = re.compile(r"\{([^\/\}]*)\/([^\/\}]*)\/?([^\/\}]*)?\/?([^\}]*)?\}")
     matches = re.finditer(matchABCChoice, txt)
     for match in matches:
         phraseChoices = [match.group(1), match.group(2)]
@@ -75,7 +76,7 @@ def processABCChoice(txt):
             phraseChoices.append(match.group(3))
         if match.group(4) is not None and match.group(4):
             phraseChoices.append(match.group(4))
-        txt = txt[:match.start()] + random.choice(phraseChoices) + txt[match.end():]
+        txt = txt.replace(match.group(0), random.choice(phraseChoices))
     return txt
 
 

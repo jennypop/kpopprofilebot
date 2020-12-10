@@ -51,6 +51,7 @@ def getWords():
                 words["planet"].append(str(line[6]))
             if (line[7]):
                 words["color"].append(str(line[7]))
+                words["color"].append(str(line[7]))
 
 
 getWords()

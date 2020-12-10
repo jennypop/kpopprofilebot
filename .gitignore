@@ -2,3 +2,9 @@ wipdata/*
 .gitignore
 **/botsite/*
 botsite/*
+*.pyc
+*.db
+**/%SystemDrive%/**
+**/__pycache__/**
+botpage/__pycache__/*
+botpage/%SystemDrive%/*

@@ -1,4 +1,4 @@
-final = False
+final = True
 
 bioPath = '/home/kpopprofilebot/botsite/botpage/idolbio.csv' if final else "botpage/idolbio.csv"
 groupsPath = '/home/kpopprofilebot/botsite/botpage/idolgroups.csv' if final else "botpage/idolgroups.csv"
@@ -8,3 +8,4 @@ mottoPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/mottos.csv' if 
 moviesPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/movies.csv' if final else "botpage/factGenerators/movies.csv"
 moviesDisneyPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/moviesDisney.csv' if final else "botpage/factGenerators/moviesDisney.csv"
 representativePath = '/home/kpopprofilebot/botsite/botpage/factGenerators/representative.csv' if final else "botpage/factGenerators/representative.csv"
+charmPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/charmPoints.csv' if final else "botpage/factGenerators/charmPoints.csv"

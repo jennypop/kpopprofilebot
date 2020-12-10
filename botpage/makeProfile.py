@@ -1,7 +1,7 @@
 import csv
 import random
 from botpage import idolData, csvPaths, factProcessor
-from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGenerator, representativeFactGenerator
+from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGenerator, representativeFactGenerator, charmFactGenerator
 
 
 def getIdolNames():
@@ -54,6 +54,7 @@ def makeFactsList(
     numMottoFacts = random.randint(0, 1)
     numMovieFacts = random.randint(0, 2)
     numRepresentativeFacts = random.randint(0, 2)
+    numCharmFacts = random.randint(0, 2)
     factsList = []
 
     # General facts
@@ -72,6 +73,7 @@ def makeFactsList(
     factsList += mottoFactGenerator.getFacts(numMottoFacts)
     factsList += movieFactGenerator.getFacts(numMovieFacts)
     factsList += representativeFactGenerator.getFacts(numRepresentativeFacts)
+    factsList += charmFactGenerator.getFacts(numCharmFacts)
 
     random.shuffle(factsList)
 
