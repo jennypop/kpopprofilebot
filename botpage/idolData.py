@@ -29,6 +29,6 @@ MBTIsFun = ["????", "8Hx4", "Hufflepuff"]
 astrologyAll = [
 "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
 ]
-companyAll = ["SM", "YG", "JYP", "BigHit", "Toast", "Socks", "Mr Blobby"]
+companyAll = ["SM", "YG", "JYP", "BigHit", "Toast", "Socks", "Mr Blobby", "S&P (Shark And Penguin)"]
 survivalShowAll = ["IDOL HELL", "Idol Broiler 92", "The Monastery", "X Factor", "Strictly", "The Great Korean Cake Off"]
 tvShowAll = ["Day and Night", "Sun and Moon", "Twin Peaks", "The Ace Attorney Anime", "Panty and Stocking", "MONSTAR", "The Dudesons", "The Job", "The Mullets", "Ugly Alert", "Moon Lovers Crimson Romance Kyou", "Lilies over Boys", "What If We Kissed At The SBS Gayo Daejun", "Memories of Cowahanga", "What's Wrong With Our Boy Kev", "The Tenth Ex-Girlfriend", "IC", "Land Castle"]

@@ -1,12 +1,11 @@
 import csv
 import random
 import re
-from botpage import csvPaths
+from botpage import csvPaths, factProcessor
 
 words = {"lifeStage": ["in elementary school", "in secondary school", "in high school", "as a trainee"]}
 
-factTemplates = ["!HER! ((life ))motto [lifeStage] was((:)) ",
-"!HER! ((life ))motto is((:)) ",
+factTemplates = ["!HER! ((life ))motto {[lifeStage] was/is}((:)) ",
 "Motto: ", ]
 
 
@@ -26,6 +25,7 @@ mottos = getMottos()
 
 
 def processFactTemplate(txt):
+    txt = factProcessor.processABCChoice(txt)
     # Substitute all [] words
     matchKeys = re.compile(r'\[({})\]'.format('|'.join(words)))
     txt = matchKeys.sub(lambda match: random.choice(words[match.group(1)]), txt)
@@ -40,7 +40,7 @@ def debug():
         print(txt)
 
 
-def getFact():
-    txt = random.choice(factTemplates)
-    txt = processFactTemplate(txt)
-    return txt
+def getFacts(n):
+    factList = random.sample(factTemplates, n)
+    processedList = [processFactTemplate(txt) for txt in factList]
+    return processedList
