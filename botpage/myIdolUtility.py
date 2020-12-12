@@ -1,6 +1,7 @@
 import csv
 import random
 import inflect
+import math
 from datetime import date, datetime, time
 from dateutil.relativedelta import relativedelta
 from botpage import idolData, csvPaths
@@ -141,13 +142,26 @@ def formatDate(dateArg, formatType):
     elif formatType == "YM":
         return dateArg.strftime("%B ((of ))%Y")
     else:
-        return dateArg.strftime("%B %#d, %Y")
+        return dateArg.strftime("%B %#d, %Y").replace(" 0", " ")
 
 
 def getRandomDateBetween(date1, date2):
-    timeBetweenDates = (date2 - date1).days
-    assert timeBetweenDates > 0
-    return date1 + relativedelta(days=+random.randrange(timeBetweenDates))
+    timeBetweenDates = (date2 - date1)
+    now = datetime.now()  # Trick to get relativedelta in days
+    then = now - timeBetweenDates
+    diff = now - then
+    return date1 + relativedelta(days=+random.randrange(diff.days))
+
+
+def getSignForDate(dateArg):
+    startOfYear = date(dateArg.year, 1, 1)
+    daysSinceYear = relativedelta(dateArg, startOfYear)
+    now = datetime.now()  # Trick to get relativedelta in days
+    then = now - daysSinceYear
+    diff = now - then
+    astroNumber = math.floor((10+diff.days) / 30.43)
+    astroNumber = min(astroNumber, 11)
+    return idolData.astrologyAll[astroNumber]
 
 
 def makePositionsList():
@@ -175,7 +189,7 @@ def initialize():
     myIdolData.group = random.choice(groupNamesAll)
     myIdolData.gender = True if idolNamesAll[myIdolData.name] == "M" else False
     myIdolData.positions = makePositionsList()
-    myIdolData.sign = random.choice(idolData.astrologyAll)
+    myIdolData.sign = getSignForDate(myIdolData.birthDate)
     myIdolData.bloodType = random.choice(idolData.bloodTypesAll if random.random() < 0.9 else idolData.bloodTypesFun)
     myIdolData.MBTI = random.choice(idolData.MBTIsAll if random.random() < 0.9 else idolData.MBTIsFun)
 
@@ -201,6 +215,7 @@ def initializeDicts():
     dictRandom["!GROUPNAME!"] = groupNamesAll
     dictRandom["!SUBUNITNAME!"] = groupNamesAll
 
+    dictSingle["!MYIDOLNAME!"] = myIdolData.name
     dictSingle["!MYGROUPNAME!"] = myIdolData.group
     dictSingle["!HOMECOUNTRY!"] = "South Korea"  # TODO
 

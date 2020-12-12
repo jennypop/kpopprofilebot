@@ -7,7 +7,7 @@ from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGener
 def makeFactsList():
     factsfile = open(csvPaths.factsPath, 'r', encoding="utf8")
     numRandomFacts = random.randint(5, 7)
-    numFoodFacts = random.randint(0, 3)
+    numFoodFacts = random.randint(0, 2)
     numMottoFacts = random.randint(0, 1)
     numMovieFacts = random.randint(0, 2)
     numRepresentativeFacts = random.randint(0, 2)
@@ -18,7 +18,7 @@ def makeFactsList():
     # General facts
     with factsfile:
         factsReader = csv.reader(factsfile)
-        chances = numRandomFacts / 8000
+        chances = numRandomFacts / 3000
         for line in factsReader:
             if random.random() < chances:
                 unprocessedFact = line[0]

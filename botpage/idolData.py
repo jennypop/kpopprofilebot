@@ -26,8 +26,7 @@ MBTIsAll = [
 ]
 MBTIsFun = ["????", "8Hx4", "Hufflepuff"]
 
-astrologyAll = [
-"Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
+astrologyAll = ["Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"
 ]
 companyAll = ["SM", "YG", "JYP", "BigHit", "Toast", "Socks", "Mr Blobby", "S&P (Shark And Penguin)"]
 survivalShowAll = ["IDOL HELL", "Idol Broiler 92", "The Monastery", "X Factor", "Strictly", "The Great Korean Cake Off", "Idol Academy", "Idol School", "Idol Producer", "The Duo", "V-2", "Under 20"]
