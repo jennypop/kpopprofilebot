@@ -12,6 +12,7 @@ words = {"food": [],
         "foodDish": ["food", "dish"],
         "condiment": ["salt", "sugar", "cheese", "ketchup", "parmesan", "mustard", "hot sauce", "kimchi", "rice", "noodles", "aioli", "barbecue sauce", "chili sauce", "chutney", "fish paste", "dip", "fruit preserves", "soy sauce", "horseradish", "guac", "mayonnaise", "pesto", "sauerkraut", "sriracha", "teriyaki sauce", "vinegar"],
         "meal": ["breakfast", "brunch", "lunch", "tea", "supper", "dinner", "midnight snack", "late night snack"],
+        "foodEffect": ["help with !HER! digestion", "reduce puffiness", "build strong muscles", "gain weight", "lose weight", "help with !HER! sleep", "improve !HER! skin"],
         }
 
 foodExpressions = ["anything [foodFlavor]",
@@ -51,6 +52,7 @@ foodFacts = ["!SHE! ((also ))[eatsVerb] ([food])*3( and )",
 "!SHE! only eats ([food])*2( and )",
 "If !SHE! [wasWere] a food !SHE! would be [food]",
 "Once !SHE! only ate ([food])*2( and ) for [timePeriod]",
+"Once !SHE! ate [food] !SMALLINT! times in one day and got sick the next day",
 "A food that !SHE! will eat without doubt is [food]",
 "If !SHE! had to eat one food for [timePeriod] !SHE! would eat [food]",
 "!SHE! can finish [food] in [shortTimePeriod]",
@@ -60,6 +62,7 @@ foodFacts = ["!SHE! ((also ))[eatsVerb] ([food])*3( and )",
 "When dieting, !SHE! craves [food] the most",
 "!SHE! is addicted to [food]",
 "!SHE! can guess the brand of [food] just from the taste",
+"!SHE! eats [food] in order to [foodEffect]",
 ]
 
 # foodlist generator
@@ -113,3 +116,5 @@ def getFacts(n):
     factList = random.sample(foodFacts, n)
     processedList = [processFactTemplate(txt) for txt in factList]
     return processedList
+
+"Once !SHE! only ate ([food])*2( and ) for [timePeriod]",
