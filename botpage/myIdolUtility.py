@@ -8,6 +8,7 @@ from botpage import idolData, csvPaths
 
 dictSingle = {}
 dictRandom = {
+    "personalityTrait": [], "color": [], "animal": [], "drink": [], "fruit": [], "food": [],
     "closePerson": ["!HER! mom", "!HER! dad", "!MEMBERNAME!", "!HER! sister", "!HER! brother", "!HER! grandmother", "!HER! grandpa", "!HER! manager"],
     "wasWere": ["was", "were"],
     "whenSituation": ["when !SHE! is alone", "when !SHE! is with others", "when !SHE! is at home", "when the night comes", "when !SHE! can't sleep", "before going to bed", "from her bed", "at the cinema", "when !SHE! feels good", "when !SHE! feels down", "on the first day of each month", "when watching a movie", ],
@@ -15,11 +16,13 @@ dictRandom = {
     "timePeriod": ["a [timeBasic]", "two [timeBasic]s", "three [timeBasics]", "half a year", "a year", "the rest of !HER! life"],
     "oftenTimePeriod": ["{once/twice/a few times/multiple times} a {[timeBasic]/year}", "once every few [timeBasic]s", "every {[timeBasic]/year}"],
     "shortTimePeriod": ["five seconds", "twenty seconds", "thirty seconds", "{one/a} minute", "!SMALLINTW! minutes", "the blink of an eye"],
+    "shortishTimePeriod": ["ten minutes", "twenty minutes", "half hour", "hour", "few hours"],
     "positiveAdjective": ["relaxing", "comfortable", "refreshing"],
     "prefixCombiner": [" and ", ", ", ": "],
     "exceptBut": ["except", "but"],
     "youngerTime": ["at the age of !TRAINEEAGE!", "in {middle school/high school/!SCHOOLGRADE!}", "when !SHE! was in {middle school/high school/!SCHOOLGRADE!}", "when !SHE! was younger", ],
 }
+dictRandomNoBrackets = {}
 
 
 class Idol:
@@ -69,6 +72,46 @@ def getGroupNames():
     return groupNamesAll
 
 
+def addPersonalityTraitsToDictRandom():
+    personalitysfile = open(csvPaths.charmPath, 'r', encoding="utf8")
+    personalityTraits = []
+
+    with personalitysfile:
+        personalitysReader = csv.reader(personalitysfile)
+        for line in personalitysReader:
+            if (line[3]):
+                personalityTraits.append(str(line[3]))
+    dictRandom["personalityTrait"] = personalityTraits
+
+
+def addFoodToDictRandom():
+    file = open(csvPaths.foodPath, 'r', encoding="utf8")
+    x = []
+
+    with file:
+        reader = csv.reader(file)
+        for line in reader:
+            x.append(str(line[0]))
+    dictRandom["food"] = x
+
+
+def addColorAnimalDrinkFruitToDictRandom():
+    file = open(csvPaths.representativePath, 'r', encoding="utf8")
+
+    with file:
+        reader = csv.reader(file)
+        next(reader)
+        for line in reader:
+            if (line[0]):
+                dictRandom["animal"].append(str(line[0]))
+            if (line[2]):
+                dictRandom["drink"].append(str(line[2]))
+            if (line[3]):
+                dictRandom["fruit"].append(str(line[3]))
+            if (line[7]):
+                dictRandom["color"].append(str(line[7]))
+
+
 def getRandomDate(yearY):
     return datetime(year=yearY, month=1, day=1) + relativedelta(days=random.randint(0, 364))
 
@@ -85,6 +128,7 @@ def makeDatesForIdol():
 
     debutAge = random.randint(17, min(idolAge-1, 22))
     myIdolData.debutDate = birthDate + relativedelta(years=+debutAge, days=random.randint(0, 364))
+    myIdolData.debutDate = min(myIdolData.debutDate, datetime.now() + relativedelta(months=-1))
     myIdolData.debutDateString = formatDate(myIdolData.debutDate, "")
 
     # Default trainee period 2-4 years
@@ -206,18 +250,28 @@ def initializeDicts():
     dictSingle["!HERHIM!"] = "him" if gender else "her"
     dictSingle["!HERSELF!"] = "himself" if gender else "herself"
 
-    dictRandom["!COMPANYNAME!"] = idolData.companyAll
-    dictRandom["!OTHERCOMPANYNAME!"] = idolData.companyAll
-    dictRandom["!SURVIVALSHOWNAME!"] = idolData.survivalShowAll
-    dictRandom["!TVSHOWNAME!"] = idolData.tvShowAll
-    dictRandom["!FESTIVALNAME!"] = idolData.festivalAll
-    dictRandom["!IDOLNAME!"] = list(idolNamesAll.keys())
-    dictRandom["!GROUPNAME!"] = groupNamesAll
-    dictRandom["!SUBUNITNAME!"] = groupNamesAll
+    dictRandomNoBrackets["!COMPANYNAME!"] = idolData.companyAll
+    dictRandomNoBrackets["!OTHERCOMPANYNAME!"] = idolData.companyAll
+    dictRandomNoBrackets["!TRAINEEGROUPNAME!"] = idolData.traineeGroupAll
+    dictRandomNoBrackets["!SURVIVALSHOWNAME!"] = idolData.survivalShowAll
+    dictRandomNoBrackets["!TVSHOWNAME!"] = idolData.tvShowAll
+    dictRandomNoBrackets["!VARIETYSHOWNAME!"] = idolData.varietyShowAll
+    dictRandomNoBrackets["!RADIOSHOWNAME!"] = idolData.radioShowAll
+    dictRandomNoBrackets["!INTERVIEWSHOWNAME!"] = idolData.varietyShowAll + idolData.radioShowAll
+    dictRandomNoBrackets["!FESTIVALNAME!"] = idolData.festivalAll
+    dictRandomNoBrackets["!IDOLNAME!"] = list(idolNamesAll.keys())
+    dictRandomNoBrackets["!GROUPNAME!"] = groupNamesAll
+    dictRandomNoBrackets["!OTHERGROUPNAME!"] = groupNamesAll
+    dictRandomNoBrackets["!SUBUNITNAME!"] = groupNamesAll
 
     dictSingle["!MYIDOLNAME!"] = myIdolData.name
     dictSingle["!MYGROUPNAME!"] = myIdolData.group
+    dictSingle["!MYCOMPANYNAME!"] = random.choice(idolData.companyAll)
     dictSingle["!HOMECOUNTRY!"] = "South Korea"  # TODO
+
+    addPersonalityTraitsToDictRandom()
+    addColorAnimalDrinkFruitToDictRandom()
+    addFoodToDictRandom()
 
     # Key dates
     dates = {"BIRTHDATE": myIdolData.birthDate,

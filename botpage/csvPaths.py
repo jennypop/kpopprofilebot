@@ -9,3 +9,7 @@ moviesPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/movies.csv' if
 moviesDisneyPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/moviesDisney.csv' if final else "botpage/factGenerators/moviesDisney.csv"
 representativePath = '/home/kpopprofilebot/botsite/botpage/factGenerators/representative.csv' if final else "botpage/factGenerators/representative.csv"
 charmPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/charmPoints.csv' if final else "botpage/factGenerators/charmPoints.csv"
+habitPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/habits.csv' if final else "botpage/factGenerators/habits.csv"
+roleModelPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/rolemodels.csv' if final else "botpage/factGenerators/rolemodels.csv"
+englishNamePath = '/home/kpopprofilebot/botsite/botpage/factGenerators/englishNames.csv' if final else "botpage/factGenerators/englishNames.csv"
+fearsPath = '/home/kpopprofilebot/botsite/botpage/factGenerators/fears.csv' if final else "botpage/factGenerators/fears.csv"

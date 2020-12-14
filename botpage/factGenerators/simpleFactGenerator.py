@@ -39,7 +39,7 @@ superpowerFactTemplates = [
 ]
 rankFactTemplates = [
 "!SHE! ((is ))ranked !RANK100! on TC Candler \"The 100 Most {Beautiful/Handsome/!IDOLNAME!dsome} Faces of !ACTIVEDATEY!\"",
-"!SHE! ((was ))ranked !RANK! on !SURVIVALSHOWNAME!{ ep !SMALLINT! / receiving !HUGENUMBER! votes / with !HUGENUMBER! votes}(( [rankSuffix]))",
+"!SHE! ((was ))ranked !RANK! on !SURVIVALSHOWNAME!{ ep !SMALLINT!/ receiving !HUGENUMBER! votes/ with !HUGENUMBER! votes}(( [rankSuffix]))",
 "!SHE! {appeared on/participated in} !SURVIVALSHOWNAME! and ranked !RANK!(( {receiving/with} !HUGENUMBER! votes))(( [rankSuffix]))",
 ]
 switchBodiesFactTemplates = [

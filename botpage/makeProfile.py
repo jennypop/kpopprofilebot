@@ -1,17 +1,12 @@
 import csv
 import random
 from botpage import factProcessor, myIdolUtility, csvPaths
-from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGenerator, representativeFactGenerator, charmFactGenerator, simpleFactGenerator
+from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGenerator, representativeFactGenerator, charmFactGenerator, simpleFactGenerator, habitFactGenerator, roleModelFactGenerator, englishNameFactGenerator, roommateFactGenerator, fearFactGenerator, traineeFactGenerator, languageFactGenerator, familyFactGenerator
 
 
-def makeFactsList():
+def makeFactsList(gender):
     factsfile = open(csvPaths.factsPath, 'r', encoding="utf8")
     numRandomFacts = random.randint(5, 7)
-    numFoodFacts = random.randint(0, 2)
-    numMottoFacts = random.randint(0, 1)
-    numMovieFacts = random.randint(0, 2)
-    numRepresentativeFacts = random.randint(0, 2)
-    numCharmFacts = random.randint(0, 2)
     simpleFactsChance = 0.3
     factsList = []
 
@@ -27,12 +22,20 @@ def makeFactsList():
                     break
 
     # Fact generators
-    factsList += foodFactGenerator.getFacts(numFoodFacts)
-    factsList += mottoFactGenerator.getFacts(numMottoFacts)
-    factsList += movieFactGenerator.getFacts(numMovieFacts)
-    factsList += representativeFactGenerator.getFacts(numRepresentativeFacts)
-    factsList += charmFactGenerator.getFacts(numCharmFacts)
+    factsList += foodFactGenerator.getFacts(random.randint(0, 2))
+    factsList += mottoFactGenerator.getFacts(random.randint(0, 1))
+    factsList += movieFactGenerator.getFacts(random.randint(0, 2))
+    factsList += representativeFactGenerator.getFacts(random.randint(0, 2))
+    factsList += charmFactGenerator.getFacts(random.randint(0, 2))
     factsList += simpleFactGenerator.getFacts(simpleFactsChance)
+    factsList += habitFactGenerator.getFacts(random.randint(0, 1))
+    factsList += roleModelFactGenerator.getFacts(random.randint(0, 1))
+    factsList += englishNameFactGenerator.getFacts(random.randint(0, 1), gender)
+    factsList += roommateFactGenerator.getFacts(random.randint(0, 1))
+    factsList += fearFactGenerator.getFacts(random.randint(0, 1))
+    factsList += traineeFactGenerator.getFacts(random.randint(0, 1))
+    factsList += languageFactGenerator.getFacts(random.randint(0, 1))
+    factsList += familyFactGenerator.getFacts(random.randint(0, 1))
 
     random.shuffle(factsList)
 
@@ -50,7 +53,7 @@ def makeProfile(userIdolName, userGroupName):
     #     idolNames[0] = userIdolName
     # if userGroupName:
     #     groupNames[0] = userGroupName
-    profile.facts = makeFactsList()
+    profile.facts = makeFactsList(profile.gender)
     return profile
 
 

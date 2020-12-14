@@ -3,14 +3,10 @@ import random
 import re
 from botpage import csvPaths, factProcessor
 
-words = {"animal": [],
-        "flower": [],
-        "drink": [],
-        "fruit": [],
+words = {"flower": [],
         "weapon": [],
         "day": [],
         "planet": [],
-        "color": [],
         "representative": ["representative", "designated", "favorite", "lucky", "official", "most loved"],
         "colorfulObject": ["a [positiveAdjective] vitamin", "!HER! eyes", "!HER! room", "the sky", "!HER! hometown", "!HER! voice"],
         }
@@ -35,23 +31,14 @@ def getWords():
         representativeReader = csv.reader(representativefile)
         next(representativeReader)
         for line in representativeReader:
-            if (line[0]):
-                words["animal"].append(str(line[0]))
             if (line[1]):
                 words["flower"].append(str(line[1]))
-            if (line[2]):
-                words["drink"].append(str(line[2]))
-            if (line[3]):
-                words["fruit"].append(str(line[3]))
             if (line[4]):
                 words["weapon"].append(str(line[4]))
             if (line[5]):
                 words["day"].append(str(line[5]))
             if (line[6]):
                 words["planet"].append(str(line[6]))
-            if (line[7]):
-                words["color"].append(str(line[7]))
-                words["color"].append(str(line[7]))
 
 
 getWords()

@@ -47,25 +47,28 @@ def processFact(
     # Process "(x)*d(w)" pattern
     txt = processAsterisk(txt)
 
-    # Replace dictRandom table
-    def lookupMatch(match):
-        # print(match.group(1))
-        return random.choice(myIdolUtility.dictRandom[match.group(1)])
+    # def lookupMatch(match, dicti):
+    #     # print(match.group(1))
+    #     return random.choice(dicti[match.group(1)])
 
     matchKeys = re.compile(r'\[({})\]'.format('|'.join(myIdolUtility.dictRandom)))
-    txt = matchKeys.sub(lookupMatch, txt)
+    txt = matchKeys.sub(lambda match: random.choice(myIdolUtility.dictRandom[match.group(1)]), txt)
+    matchKeys = re.compile(r'({})'.format('|'.join(myIdolUtility.dictRandomNoBrackets)))
+    txt = matchKeys.sub(lambda match: random.choice(myIdolUtility.dictRandomNoBrackets[match.group(1)]), txt)
+
+    # Do substition twice to make up for embedded []
     matchKeys = re.compile(r'\[({})\]'.format('|'.join(myIdolUtility.dictRandom)))
-    txt = matchKeys.sub(lookupMatch, txt)  # Allow embedded
-    matchKeys = re.compile(r'({})'.format('|'.join(myIdolUtility.dictRandom)))
-    txt = matchKeys.sub(lookupMatch, txt)
+    txt = matchKeys.sub(lambda match: random.choice(myIdolUtility.dictRandom[match.group(1)]), txt)
+    matchKeys = re.compile(r'({})'.format('|'.join(myIdolUtility.dictRandomNoBrackets)))
+    txt = matchKeys.sub(lambda match: random.choice(myIdolUtility.dictRandomNoBrackets[match.group(1)]), txt)
 
     # Replace dictSingle table
     matchKeys = re.compile(r'({})'.format('|'.join(myIdolUtility.dictSingle)))
     txt = matchKeys.sub(lambda match: myIdolUtility.dictSingle[match.group(1)], txt)
 
     # Replace numbers and dates
-    txt = txt.replace("!SMALLINT!", str(random.randint(1, 7)))
-    txt = txt.replace("!SMALLINTW!", p.number_to_words(random.randint(1, 7)))
+    txt = txt.replace("!SMALLINT!", str(random.randint(2, 7)))
+    txt = txt.replace("!SMALLINTW!", p.number_to_words(random.randint(2, 7)))
     txt = txt.replace("!HUGENUMBER!", str(random.randint(1000000, 150000000)))
     txt = txt.replace("!HIGHRANK!", myIdolUtility.getRandomRank(1, 12))
     txt = txt.replace("!VERYHIGHRANK!", myIdolUtility.getRandomRank(1, 5))
@@ -83,7 +86,7 @@ def processFact(
     uniqueIdolNames = txt.count("!IDOLNAME!")
     uniqueIdolNames2 = txt.count("!MEMBERNAME!")
     if uniqueIdolNames + uniqueIdolNames2 > 0:
-        idolNamesUsing = random.sample(myIdolUtility.dictRandom["!IDOLNAME!"], uniqueIdolNames + uniqueIdolNames2)
+        idolNamesUsing = random.sample(myIdolUtility.dictRandomNoBrackets["!IDOLNAME!"], uniqueIdolNames + uniqueIdolNames2)
         for i in range(uniqueIdolNames):
             txt = txt.replace("!IDOLNAME!", idolNamesUsing[i], 1)
         for i in range(uniqueIdolNames2):
@@ -92,7 +95,7 @@ def processFact(
     uniqueGroupNames = txt.count("!GROUPNAME!")
     uniqueGroupNames += txt.count("!SUBUNITNAME!")
     if uniqueGroupNames > 0:
-        groupNamesUsing = random.sample(myIdolUtility.dictRandom["!GROUPNAME!"], uniqueGroupNames)
+        groupNamesUsing = random.sample(myIdolUtility.dictRandomNoBrackets["!GROUPNAME!"], uniqueGroupNames)
         groupNamesUsing[0] = myIdolUtility.myIdolData.group
         for i in range(uniqueGroupNames):
             txt = txt.replace("!GROUPNAME!", groupNamesUsing[i], 1)

@@ -3,8 +3,7 @@ import random
 import re
 from botpage import csvPaths, factProcessor
 
-words = {"food": [],
-         "noExpressionFood": [],
+words = {
         "eatsVerb": ["{likes/dislikes/loves/hates}(( to eat))", "eats", "wants to eat", "will eat", "supports", "cannot handle", "{can't/cannot} eat", "{does/doesn't} eat", "has problems eating", "dislikes", "{does not/doesn't} like(( to eat))", ],
         "flavoredFood": ["oreos", "ice cream", "chips", "yogurt", "cup ramen"],
         "foodFlavor": ["sweet", "sour", "salty", "spicy", "smoky"],
@@ -61,21 +60,9 @@ foodFacts = ["!SHE! ((also ))[eatsVerb] ([food])*3( and )",
 "!HER! go-to snack [whenSituation] is [food]",
 "When dieting, !SHE! craves [food] the most",
 "!SHE! is addicted to [food]",
-"!SHE! can guess the brand of [food] just from the taste",
+"!SHE! can guess the brand of [noExpressionFood] just from the taste",
 "!SHE! eats [food] in order to [foodEffect]",
 ]
-
-# foodlist generator
-def getFoods():
-    foodPath = csvPaths.foodPath
-    foodfile = open(foodPath, 'r', encoding="utf8")
-    foods = []
-
-    with foodfile:
-        foodReader = csv.reader(foodfile)
-        for line in foodReader:
-            foods.append(line[0])
-    return foods
 
 
 def processFactTemplate(txt):
@@ -90,6 +77,7 @@ def processFactTemplate(txt):
         else:
             txt = matchFood.sub(lambda match: random.choice(badFoodExpressions), txt)
 
+    txt = txt.replace("[noExpressionFood]", "[food]")
     # Use a prefix
     if random.random() > 0.92:
         txt = txt[0].lower() + txt[1:]
@@ -101,20 +89,7 @@ def processFactTemplate(txt):
     return txt
 
 
-words["food"] = getFoods()
-words["noExpressionFood"] = words["food"]
-
-
-def debug():
-    for i in range(10):
-        txt = random.choice(foodFacts)
-        txt = processFactTemplate(txt)
-        print(txt)
-
-
 def getFacts(n):
     factList = random.sample(foodFacts, n)
     processedList = [processFactTemplate(txt) for txt in factList]
     return processedList
-
-"Once !SHE! only ate ([food])*2( and ) for [timePeriod]",
