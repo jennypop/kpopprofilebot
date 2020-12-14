@@ -253,6 +253,7 @@ def initializeDicts():
     dictRandomNoBrackets["!COMPANYNAME!"] = idolData.companyAll
     dictRandomNoBrackets["!OTHERCOMPANYNAME!"] = idolData.companyAll
     dictRandomNoBrackets["!TRAINEEGROUPNAME!"] = idolData.traineeGroupAll
+    dictRandomNoBrackets["!REALITYSHOWNAME!"] = idolData.realityShowAll
     dictRandomNoBrackets["!SURVIVALSHOWNAME!"] = idolData.survivalShowAll
     dictRandomNoBrackets["!TVSHOWNAME!"] = idolData.tvShowAll
     dictRandomNoBrackets["!VARIETYSHOWNAME!"] = idolData.varietyShowAll
@@ -260,14 +261,16 @@ def initializeDicts():
     dictRandomNoBrackets["!INTERVIEWSHOWNAME!"] = idolData.varietyShowAll + idolData.radioShowAll
     dictRandomNoBrackets["!FESTIVALNAME!"] = idolData.festivalAll
     dictRandomNoBrackets["!IDOLNAME!"] = list(idolNamesAll.keys())
-    dictRandomNoBrackets["!GROUPNAME!"] = groupNamesAll
+    # dictRandomNoBrackets["!GROUPNAME!"] = groupNamesAll
     dictRandomNoBrackets["!OTHERGROUPNAME!"] = groupNamesAll
     dictRandomNoBrackets["!SUBUNITNAME!"] = groupNamesAll
 
     dictSingle["!MYIDOLNAME!"] = myIdolData.name
     dictSingle["!MYGROUPNAME!"] = myIdolData.group
+    dictSingle["!IDOLGROUP!"] = myIdolData.group
     dictSingle["!MYCOMPANYNAME!"] = random.choice(idolData.companyAll)
     dictSingle["!HOMECOUNTRY!"] = "South Korea"  # TODO
+    dictSingle["!KOREANPLACE!"] = "Seoul"
 
     addPersonalityTraitsToDictRandom()
     addColorAnimalDrinkFruitToDictRandom()

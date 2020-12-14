@@ -5,11 +5,11 @@ from botpage import csvPaths, factProcessor
 
 words = {"habit": ["bad habit", "frequent habit", "unusual habit", "habit"],
 "habitSuffix": [" when no-one is looking(( at !HER!))",
-" when she is alone",
-" when she is around others", ],
+" when !SHE! is alone",
+" when !SHE! is around others", ],
 "suffix": ["The members said it was ((kind of ))serious",
-"It was a habit she got from [closePerson]",
-"[closePerson] tried to give her an intervention"]}
+"It was a habit !SHE! got from [closePerson]",
+"[closePerson] tried to give !HER! an intervention"]}
 
 factTemplates = ["A [habit] !SHE! has is [habiting]",
 "!HER! [habit] is [habiting]",
@@ -17,7 +17,7 @@ factTemplates = ["A [habit] !SHE! has is [habiting]",
 "!SHE! can never drop !HER! [habit] of [habiting]",
 "!SHE! used to have a [habit] of [habiting], but ((!SHE! says ))!SHE! doesn't do it anymore",
 "!SHE! wants to fix !HER! [habit] of [habiting]",
-"[habiting] is one of her [habit]s",
+"[habiting] is one of !HER! [habit]s",
 "!SHE! doesn't have [habit]s", ]
 
 

@@ -6,14 +6,14 @@ from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGener
 
 def makeFactsList(gender):
     factsfile = open(csvPaths.factsPath, 'r', encoding="utf8")
-    numRandomFacts = random.randint(5, 7)
+    numRandomFacts = random.randint(1, 4)
     simpleFactsChance = 0.3
     factsList = []
 
     # General facts
     with factsfile:
         factsReader = csv.reader(factsfile)
-        chances = numRandomFacts / 3000
+        chances = numRandomFacts / 4000
         for line in factsReader:
             if random.random() < chances:
                 unprocessedFact = line[0]
@@ -23,19 +23,28 @@ def makeFactsList(gender):
 
     # Fact generators
     factsList += foodFactGenerator.getFacts(random.randint(0, 2))
-    factsList += mottoFactGenerator.getFacts(random.randint(0, 1))
+    if random.random() < 0.1:
+        factsList += mottoFactGenerator.getFacts(1)
     factsList += movieFactGenerator.getFacts(random.randint(0, 2))
     factsList += representativeFactGenerator.getFacts(random.randint(0, 2))
     factsList += charmFactGenerator.getFacts(random.randint(0, 2))
     factsList += simpleFactGenerator.getFacts(simpleFactsChance)
-    factsList += habitFactGenerator.getFacts(random.randint(0, 1))
-    factsList += roleModelFactGenerator.getFacts(random.randint(0, 1))
-    factsList += englishNameFactGenerator.getFacts(random.randint(0, 1), gender)
-    factsList += roommateFactGenerator.getFacts(random.randint(0, 1))
-    factsList += fearFactGenerator.getFacts(random.randint(0, 1))
-    factsList += traineeFactGenerator.getFacts(random.randint(0, 1))
-    factsList += languageFactGenerator.getFacts(random.randint(0, 1))
-    factsList += familyFactGenerator.getFacts(random.randint(0, 1))
+    if random.random() < 0.5:
+        factsList += habitFactGenerator.getFacts(1)
+    if random.random() < 0.1:
+        factsList += roleModelFactGenerator.getFacts(1)
+    if random.random() < 0.05:
+        factsList += englishNameFactGenerator.getFacts(1, gender)
+    if random.random() < 0.1:
+        factsList += roommateFactGenerator.getFacts(1)
+    if random.random() < 0.3:
+        factsList += fearFactGenerator.getFacts(1)
+    if random.random() < 0.3:
+        factsList += traineeFactGenerator.getFacts(1)
+    if random.random() < 0.1:
+        factsList += languageFactGenerator.getFacts(1)
+    if random.random() < 0.1:
+        factsList += familyFactGenerator.getFacts(1)
 
     random.shuffle(factsList)
 

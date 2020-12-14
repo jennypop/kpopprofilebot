@@ -13,7 +13,7 @@ factTemplates = ["!HER! (({main/most notable} )){((most ))charm((ing))/attractio
 "!HER! [body] is the most attractive part of !HER! body",
 "!SHE! has an attractive [body]",
 "Body secret: [body]",
-"!HER! personality {can be described as/is} (((very/quite ))[personalityTrait])*2( and )",
+"!HER! personality {can be described as/is} ({very/quite/} [personalityTrait])*2( and )",
 "!HER! most attractive personality trait is that !SHE! is (({very/quite} ))[personalityTrait]",
 "!HER! strengths{ are/ include/:} being ([personalityTrait])*2( and )",
 "!SHE!'s the group's [personalityTrait] member",

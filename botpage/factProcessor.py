@@ -95,10 +95,12 @@ def processFact(
     uniqueGroupNames = txt.count("!GROUPNAME!")
     uniqueGroupNames += txt.count("!SUBUNITNAME!")
     if uniqueGroupNames > 0:
-        groupNamesUsing = random.sample(myIdolUtility.dictRandomNoBrackets["!GROUPNAME!"], uniqueGroupNames)
+        groupNamesUsing = random.sample(myIdolUtility.dictRandomNoBrackets["!OTHERGROUPNAME!"], uniqueGroupNames)
         groupNamesUsing[0] = myIdolUtility.myIdolData.group
         for i in range(uniqueGroupNames):
             txt = txt.replace("!GROUPNAME!", groupNamesUsing[i], 1)
+            txt = txt.replace("!IDOLGROUP!", groupNamesUsing[i], 1)
+            txt = txt.replace("!MYGROUPNAME!", groupNamesUsing[i], 1)
         for i in range(uniqueGroupNames):
             txt = txt.replace("!SUBUNITNAME!", groupNamesUsing[i], 1)
 
