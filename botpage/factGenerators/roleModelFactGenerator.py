@@ -1,5 +1,5 @@
 import random
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 from factGenerators import basicUtils
 
 words = {"fan": ["big fan", "huge fan", "fan", "long-time fan", "really big fan"],

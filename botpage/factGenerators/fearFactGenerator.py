@@ -1,4 +1,4 @@
-from botpage import csvPaths
+import csvPaths
 from factGenerators import basicUtils
 
 words = {}

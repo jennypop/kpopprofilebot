@@ -1,6 +1,6 @@
 import csv
 import random
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 
 factTemplates = [
 "((On !INTERVIEWSHOWNAME! ))!SHE! {revealed/told fans} !HER! English name which is [EnglishName]",

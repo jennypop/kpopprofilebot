@@ -1,7 +1,7 @@
 import csv
 import random
 import re
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 
 words = { "herCharm": [], "body": [], "noHerCharm": [], }
 factTemplates = ["!HER! (({main/most notable} )){((most ))charm((ing))/attraction/unique} point is((:)) {[noHerCharm]/!HER! [herCharm]}",

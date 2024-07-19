@@ -1,7 +1,7 @@
 import csv
 import random
 import re
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 
 words = {"habit": ["bad habit", "frequent habit", "unusual habit", "habit"],
 "habitSuffix": [" when no-one is looking(( at !HER!))",

@@ -4,7 +4,7 @@ import inflect
 import math
 from datetime import date, datetime, time
 from dateutil.relativedelta import relativedelta
-from botpage import idolData, csvPaths
+import idolData, csvPaths
 
 dictSingle = {}
 dictRandom = {

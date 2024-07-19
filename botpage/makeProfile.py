@@ -1,8 +1,7 @@
 import csv
 import random
-from botpage import factProcessor, myIdolUtility, csvPaths
+import factProcessor, myIdolUtility, csvPaths
 from factGenerators import foodFactGenerator, mottoFactGenerator, movieFactGenerator, representativeFactGenerator, charmFactGenerator, simpleFactGenerator, habitFactGenerator, roleModelFactGenerator, englishNameFactGenerator, roommateFactGenerator, fearFactGenerator, traineeFactGenerator, languageFactGenerator, familyFactGenerator
-
 
 def makeFactsList(gender):
     factsfile = open(csvPaths.factsPath, 'r', encoding="utf8")

@@ -1,6 +1,6 @@
 import random
 import re
-from botpage import factProcessor
+import factProcessor
 
 words = {"religiousPerson": ["Buddhist", "Christian", "Protestant", "Catholic"],
 "religion": ["Buddhism", "Christianity", "Protestantism", "Catholicism"],

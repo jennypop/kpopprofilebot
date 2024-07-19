@@ -1,7 +1,7 @@
 import csv
 import random
 import re
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 
 words = {"lifeStage": ["in elementary school", "in secondary school", "in high school", "as a trainee"]}
 

@@ -1,7 +1,7 @@
 import csv
 import random
 import re
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 from factGenerators import basicUtils
 
 words = {

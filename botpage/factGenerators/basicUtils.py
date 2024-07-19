@@ -1,7 +1,7 @@
 import csv
 import random
 import re
-from botpage import factProcessor
+import factProcessor
 
 
 def getFromCSV(path):

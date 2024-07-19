@@ -1,7 +1,7 @@
 import csv
 import random
 import re
-from botpage import csvPaths, factProcessor
+import csvPaths, factProcessor
 
 words = {
         "eatsVerb": ["{likes/dislikes/loves/hates}(( to eat))", "eats", "wants to eat", "will eat", "supports", "cannot handle", "{can't/cannot} eat", "{does/doesn't} eat", "has problems eating", "dislikes", "{does not/doesn't} like(( to eat))", ],

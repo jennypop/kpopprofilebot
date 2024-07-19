@@ -1,7 +1,7 @@
 import random
 import re
 import inflect
-from botpage import myIdolUtility
+import myIdolUtility
 
 
 def processFactEarly(txt):
